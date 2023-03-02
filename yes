@@ -1,0 +1,17 @@
+var shrekFacts = [(getColumn("Donkkie", "Donkey"))];
+var shrekCharacters = [(getColumn("Donkkie", "Character"))];
+var filteredFacts = [];
+onEvent("Calculate", "click", function( ) {
+  filter(getText("dropdown1"));
+  //set the output to a random shrek fact or donkey fact depending on what is selected
+  setText("text_area1", filteredFacts[randomNumber(0, filteredFacts.length-1)]);
+});
+//filter for a single shrek or donkey facts
+function filter(character) {
+  filteredFacts = [];
+  for (var i = 0; i < shrekFacts.length; i++) {
+    if (character == shrekCharacters[i]) {
+      appendItem(filteredFacts, shrekFacts[i]);
+    }
+  }
+}
